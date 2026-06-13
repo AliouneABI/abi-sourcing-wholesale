@@ -1,7 +1,3 @@
 [build]
-  command = "pnpm run build"
-  publish = "dist/public"
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  command = "pnpm run build && cp -r dist/public/* dist/ && rm -rf dist/public dist/index.js"
+  publish = "dist"
