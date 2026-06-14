@@ -1,25 +1,272 @@
-<!doctype html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A-B-I | Sourcing & Wholesale</title>
-    <!-- Google Fonts for premium typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #ffffff; color: #111111; display: flex; flex-direction: column; min-height: 100vh; padding: 20px; align-items: center; justify-content: center; }
+        
+        /* Language Switcher Button */
+        .lang-switcher { position: absolute; top: 20px; right: 20px; display: flex; gap: 5px; }
+        .lang-btn { background: #ffffff; border: 1px solid #e5e5e5; padding: 6px 12px; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 20px; transition: all 0.2s; }
+        .lang-btn.active { background: #111111; color: #ffffff; border-color: #111111; }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
-  </body>
+        .container { max-width: 600px; width: 100%; text-align: center; margin-top: 40px; }
+        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 5px; }
+        p.subtitle { color: #666666; margin-bottom: 30px; font-size: 1.1rem; }
+        .contact-info { font-size: 0.85rem; color: #999999; margin-bottom: 25px; }
+        
+        .chat-container { border: 1px solid #e5e5e5; border-radius: 12px; padding: 25px; text-align: left; background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .bot-message { font-weight: 600; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.4; }
+        
+        .options-list { list-style: none; }
+        .option-btn { width: 100%; text-align: left; padding: 18px; border: 1px solid #e5e5e5; background: #ffffff; border-radius: 8px; margin-bottom: 15px; font-size: 1rem; cursor: pointer; transition: all 0.2s ease; }
+        .option-btn:hover { background: #111111; color: #ffffff; border-color: #111111; }
+        .price-badge { display: block; font-size: 0.85rem; color: #666666; margin-top: 5px; font-weight: normal; line-height: 1.4; }
+        .option-btn:hover .price-badge { color: #cccccc; }
+        
+        .brand-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .tag { background: #f5f5f5; color: #333333; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .option-btn:hover .tag { background: #333333; color: #ffffff; }
 
+        .order-form { display: none; margin-top: 20px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; }
+        input { width: 100%; padding: 12px; border: 1px solid #e5e5e5; border-radius: 6px; font-size: 1rem; background: #ffffff; color: #111111; }
+        input:focus { border-color: #111111; outline: none; }
+        
+        .submit-btn { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .submit-btn:hover { background: #20ba5a; }
+        .back-btn { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: #666666; cursor: pointer; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="lang-switcher">
+    <button class="lang-btn active" id="btn-sw" onclick="setLanguage('sw')">SW</button>
+    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+</div>
+
+<div class="container">
+    <h1>A-B-I</h1>
+    <p class="subtitle" id="txt-subtitle">International Sourcing & Local Distribution</p>
+    <p class="contact-info">contact@a-b-i.fr | Mobile : 0724 298 976</p>
+
+    <div class="chat-container">
+        <!-- ÉTAPE 1 : Sélection -->
+        <div id="chat-step-1">
+            <p class="bot-message" id="txt-bot-welcome">Habari! Karibu A-B-I. <br>Chagua chaguo lako tafadhali :</p>
+            <ul class="options-list">
+                <li>
+                    <button class="option-btn" onclick="selectOption(1)">
+                        <strong id="txt-opt1-title">1️⃣ MAFUTA YA ALIZETI (Zeti Sunflower Oil 1L)</strong>
+                        <span class="price-badge" id="txt-opt1-badge">
+                            • 2,000+ Pcs ➔ <b>6,500 TZS</b><br>
+                            • 1,000+ Pcs ➔ <b>6,800 TZS</b><br>
+                            • 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b> (Free Delivery)
+                        </span>
+                    </button>
+                </li>
+                <li>
+                    <button class="option-btn" onclick="selectOption(2)">
+                        <strong id="txt-opt2-title">2️⃣ IMPORT GROUPAGE PRIVÉ (Conteneur / Semi-conteneur)</strong>
+                        <span class="price-badge" id="txt-opt2-badge" style="margin-bottom: 8px;">
+                            Votre conteneur/semi-conteneur aux meilleurs prix du Marché ! Recevez les prix ici.
+                        </span>
+                        <div class="brand-tags">
+                            <span class="tag">Jadida</span><span class="tag">Nutella</span><span class="tag">Kinder</span><span class="tag">Monster Energy</span><span class="tag">Redbull</span>
+                        </div>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ÉTAPE 2 : Formulaire Huile -->
+        <div id="form-oil" class="order-form">
+            <p class="bot-message"><b id="txt-form1-header">Zeti Sunflower Oil 1L</b><br><span id="txt-form1-sub">Weka taarifa zako ili kukamilisha agizo :</span></p>
+            <div class="input-group">
+                <label id="lbl-oil-name">Jina lako (Votre Nom complet)</label>
+                <input type="text" id="oil-name" placeholder="Mfano: John Doe" required>
+            </div>
+            <div class="input-group">
+                <label id="lbl-oil-qty">Idadi (Quantité - MOQ 500)</label>
+                <input type="number" id="oil-qty" placeholder="Min: 500" min="500" required>
+            </div>
+            <button class="submit-btn" id="btn-oil-submit" onclick="submitOilOrder()">Kamilisha Agizo kwenye WhatsApp ➔</button>
+            <span class="back-btn" id="btn-oil-back" onclick="goBack()">Rudi nyuma</span>
+        </div>
+
+        <!-- ÉTAPE 2 : Formulaire Import -->
+        <div id="form-import" class="order-form">
+            <p class="bot-message"><b id="txt-form2-header">Votre conteneur/semi-conteneur au meilleur prix</b><br><span id="txt-form2-sub">Jaza fomu hii ili kupokea orodha ya bei :</span></p>
+            
+            <div class="input-group">
+                <label id="lbl-imp-name">Jina na Ukoo (Nom et Prénom complets)</label>
+                <input type="text" id="imp-name" placeholder="Mfano: Alioune M'Baye" required>
+            </div>
+            <div class="input-group">
+                <label id="lbl-imp-tin">Namba ya TIN (Numéro TIN Fiscale)</label>
+                <input type="text" id="imp-tin" placeholder="Mfano: 123-456-789" required>
+            </div>
+            <div class="input-group">
+                <label id="lbl-imp-phone">Namba ya Simu (Numéro de Mobile)</label>
+                <input type="tel" id="imp-phone" placeholder="Mfano: 0773630492" required>
+            </div>
+            <div class="input-group">
+                <label id="lbl-imp-email">Barua Pepe (Adresse Email)</label>
+                <input type="email" id="imp-email" placeholder="Mfano: contact@a-b-i.fr" required>
+            </div>
+            
+            <button class="submit-btn" id="btn-imp-submit" onclick="submitImportRequest()">Pokea Orodha ya Bei kwenye WhatsApp ➔</button>
+            <span class="back-btn" id="btn-imp-back" onclick="goBack()">Rudi nyuma</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentLang = 'sw';
+    
+    // Lien officiel de votre groupe WhatsApp configuré avec Rachel
+    const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/D5riqmrBz5I9RR8Nt6c9BH"; 
+    
+    // REMPLACEZ ICI PAR VOTRE ID FORMSPREE APRÈS ACTIVATION
+    const FORMSPREE_ID = "VOTRE_ID_FORMSPREE"; 
+
+    const translations = {
+        sw: {
+            subtitle: "International Sourcing & Local Distribution",
+            welcome: "Habari! Karibu A-B-I. <br>Chagua chaguo lako tafadhali :",
+            opt1_title: "1️⃣ MAFUTA YA ALIZETI (Zeti Sunflower Oil 1L)",
+            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b><br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b> (Free Delivery)",
+            opt2_title: "2️⃣ IMPORT GROUPAGE PRIVÉ (Conteneur / Semi-conteneur)",
+            opt2_badge: "Nusu kontena kwa bei bora zaidi ya soko! Pokea bei hapa.",
+            form1_header: "Zeti Sunflower Oil 1L",
+            form1_sub: "Weka taarifa zako ili kukamilisha agizo :",
+            lbl_oil_name: "Jina lako (Jina kamili)",
+            lbl_oil_qty: "Idadi (Kiwango cha chini: 500)",
+            btn_oil_submit: "Kamilisha Agizo kwenye WhatsApp ➔",
+            btn_oil_back: "Rudi nyuma",
+            form2_header: "Nusu Kontena / Semi-Container kwa Bei Bora",
+            form2_sub: "Jaza fomu hii ili kupokea orodha ya bei :",
+            lbl_imp_name: "Jina na Ukoo",
+            lbl_imp_tin: "Namba ya TIN ya Biashara",
+            lbl_imp_phone: "Namba ya Simu",
+            lbl_imp_email: "Barua Pepe (Email)",
+            btn_imp_submit: "Pokea Orodha ya Bei kwenye WhatsApp ➔",
+            btn_imp_back: "Rudi nyuma",
+            alert_fill: "Tafadhali jaza nafasi zote"
+        },
+        en: {
+            subtitle: "International Sourcing & Local Distribution",
+            welcome: "Hello! Welcome to A-B-I. <br>Please select your option:",
+            opt1_title: "1️⃣ SUNFLOWER OIL (Zeti Sunflower Oil 1L)",
+            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b><br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b> (Free Delivery)",
+            opt2_title: "2️⃣ PRIVATE GROUPAGE IMPORT (Container / Semi-container)",
+            opt2_badge: "Your semi-container at the best market rates! Get prices here.",
+            form1_header: "Zeti Sunflower Oil 1L",
+            form1_sub: "Enter your information to complete your order:",
+            lbl_oil_name: "Your Name (Full name)",
+            lbl_oil_qty: "Quantity (MOQ: 500)",
+            btn_oil_submit: "Complete Order on WhatsApp ➔",
+            btn_oil_back: "Go Back",
+            form2_header: "Semi-Container / Shared Bulk at Best Rates",
+            form2_sub: "Fill this form to receive the wholesale price list:",
+            lbl_imp_name: "Full Name",
+            lbl_imp_tin: "TIN Number (Tax Registration)",
+            lbl_imp_phone: "Mobile Number",
+            lbl_imp_email: "Email Address",
+            btn_imp_submit: "Get Price List on WhatsApp ➔",
+            btn_imp_back: "Go Back",
+            alert_fill: "Please fill in all fields"
+        }
+    };
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.getElementById('btn-sw').classList.toggle('active', lang === 'sw');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        
+        document.getElementById('txt-subtitle').innerHTML = translations[lang].subtitle;
+        document.getElementById('txt-bot-welcome').innerHTML = translations[lang].welcome;
+        document.getElementById('txt-opt1-title').innerHTML = translations[lang].opt1_title;
+        document.getElementById('txt-opt1-badge').innerHTML = translations[lang].opt1_badge;
+        document.getElementById('txt-opt2-title').innerHTML = translations[lang].opt2_title;
+        document.getElementById('txt-opt2-badge').innerHTML = translations[lang].opt2_badge;
+        
+        document.getElementById('txt-form1-header').innerHTML = translations[lang].form1_header;
+        document.getElementById('txt-form1-sub').innerHTML = translations[lang].form1_sub;
+        document.getElementById('lbl-oil-name').innerHTML = translations[lang].lbl_oil_name;
+        document.getElementById('lbl-oil-qty').innerHTML = translations[lang].lbl_oil_qty;
+        document.getElementById('btn-oil-submit').innerHTML = translations[lang].btn_oil_submit;
+        document.getElementById('btn-oil-back').innerHTML = translations[lang].btn_oil_back;
+        
+        document.getElementById('txt-form2-header').innerHTML = translations[lang].form2_header;
+        document.getElementById('txt-form2-sub').innerHTML = translations[lang].form2_sub;
+        document.getElementById('lbl-imp-name').innerHTML = translations[lang].lbl_imp_name;
+        document.getElementById('lbl-imp-tin').innerHTML = translations[lang].lbl_imp_tin;
+        document.getElementById('lbl-imp-phone').innerHTML = translations[lang].lbl_imp_phone;
+        document.getElementById('lbl-imp-email').innerHTML = translations[lang].lbl_imp_email;
+        document.getElementById('btn-imp-submit').innerHTML = translations[lang].btn_imp_submit;
+        document.getElementById('btn-imp-back').innerHTML = translations[lang].btn_imp_back;
+    }
+
+    function selectOption(optionNumber) {
+        document.getElementById('chat-step-1').style.display = 'none';
+        if (optionNumber === 1) {
+            document.getElementById('form-oil').style.display = 'block';
+        } else {
+            document.getElementById('form-import').style.display = 'block';
+        }
+        
+        fetch("https://formspree.io/f/" + FORMSPREE_ID, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "Click", option: optionNumber, lang: currentLang })
+        }).catch(err => console.log("Silent skip"));
+    }
+
+    function goBack() {
+        document.getElementById('form-oil').style.display = 'none';
+        document.getElementById('form-import').style.display = 'none';
+        document.getElementById('chat-step-1').style.display = 'block';
+    }
+
+    function submitOilOrder() {
+        const name = document.getElementById('oil-name').value;
+        const qty = document.getElementById('oil-qty').value;
+        if (!name || !qty) { alert(translations[currentLang].alert_fill); return; }
+
+        fetch("https://formspree.io/f/" + FORMSPREE_ID, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: "Zeti Oil", name: name, quantity: qty })
+        }).then(() => {
+            window.location.href = WHATSAPP_GROUP_LINK;
+        }).catch(err => {
+            window.location.href = WHATSAPP_GROUP_LINK;
+        });
+    }
+
+    function submitImportRequest() {
+        const name = document.getElementById('imp-name').value;
+        const tin = document.getElementById('imp-tin').value;
+        const phone = document.getElementById('imp-phone').value;
+        const email = document.getElementById('imp-email').value;
+        if (!name || !tin || !phone || !email) { alert(translations[currentLang].alert_fill); return; }
+
+        fetch("https://formspree.io/f/" + FORMSPREE_ID, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: "Import Groupage", name: name, tin: tin, phone: phone, email: email })
+        }).then(() => {
+            window.location.href = WHATSAPP_GROUP_LINK;
+        }).catch(err => {
+            window.location.href = WHATSAPP_GROUP_LINK;
+        });
+    }
+</script>
+
+</body>
 </html>
