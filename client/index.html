@@ -8,7 +8,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #ffffff; color: #111111; display: flex; flex-direction: column; min-height: 100vh; padding: 20px; align-items: center; justify-content: center; }
         
-        /* Language Switcher Button */
         .lang-switcher { position: absolute; top: 20px; right: 20px; display: flex; gap: 5px; }
         .lang-btn { background: #ffffff; border: 1px solid #e5e5e5; padding: 6px 12px; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 20px; transition: all 0.2s; }
         .lang-btn.active { background: #111111; color: #ffffff; border-color: #111111; }
@@ -29,13 +28,11 @@
         .brand-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; margin-bottom: 15px; }
         .tag { background: #f5f5f5; color: #333333; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
 
-        /* Bloc Image pour Zeti */
         .product-preview-container { display: flex; gap: 15px; margin-top: 10px; border-top: 1px dashed #e5e5e5; padding-top: 15px; align-items: center; }
-        .product-img-wrapper { width: 120px; height: 90px; background: #eaeaea; border-radius: 6px; overflow: hidden; flex-shrink: 0; border: 1px solid #e5e5e5; }
+        .product-img-wrapper { width: 120px; height: 90px; background: #ffffff; border-radius: 6px; overflow: hidden; flex-shrink: 0; border: 1px solid #e5e5e5; }
         .product-img-wrapper img { width: 100%; height: 100%; object-fit: contain; background: #ffffff; }
         .product-preview-text { font-size: 0.85rem; color: #444444; line-height: 1.4; }
 
-        /* Grille des Catalogues */
         .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; border-top: 1px dashed #e5e5e5; padding-top: 15px; }
         .catalog-card { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px; cursor: pointer; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
         .catalog-card:hover { transform: translateY(-2px); border-color: #111111; }
@@ -86,7 +83,6 @@
                         
                         <div class="product-preview-container">
                             <div class="product-img-wrapper">
-                                <!-- Lien direct de votre image officielle Cemex Zeti -->
                                 <img src="https://cemex.co.tz/wp-content/uploads/2024/11/cemex-zeti-products-1024x683.png" alt="Zeti Sunflower Oil">
                             </div>
                             <div class="product-preview-text" id="txt-opt1-preview">
@@ -107,12 +103,12 @@
                             <span class="tag">Jadida</span><span class="tag">Nutella</span><span class="tag">Kinder</span><span class="tag">Monster Energy</span><span class="tag">Redbull</span>
                         </div>
                         
-                        <!-- VISU DES CATALOGUES CORRIGÉS ET FIDÈLES -->
+                        <!-- REPRÉSENTATION EXACTE DU CATALOGUE -->
                         <div class="catalog-grid">
-                            <!-- NUTELLA ED. FESTIVE 630G -->
+                            <!-- NUTELLA 630G -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Nutella 630g')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="https://www.nutella.com/al/en/images/products/p_nutella_630_v1.png" alt="Nutella 630g Festive">
+                                    <img src="nutella.png" alt="Nutella 630g">
                                 </div>
                                 <span class="catalog-desc">Nutella 630g</span>
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
@@ -127,19 +123,19 @@
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
                             </div>
 
-                            <!-- MARGARINES & MAYONNAISES -->
+                            <!-- MARGARINES & MAYONNAISES JADIDA -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Margarines & Mayonnaises')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1608797178974-15b35a61d121?w=400&q=80" alt="Margarines & Mayonnaises">
+                                    <img src="jadida.jpg" alt="Gamme Jadida">
                                 </div>
                                 <span class="catalog-desc" id="txt-cat-margarine">Margarines na Mayonnaises</span>
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
                             </div>
 
-                            <!-- KINDER CLASSIC & WHITE -->
+                            <!-- KINDER ETC -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Kinder & Chocolates')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1626803775151-61d756612f97?w=400&q=80" alt="Kinder Classic & White">
+                                    <img src="https://images.tcdn.com.br/img/img_prod/746520/cesta_de_chocolate_com_milka_kit_kat_nutella_16_itens_cod_1777_5801396_2_465339d3a524a8e525aa6818def260be.jpg" alt="Kinder & Chocolates">
                                 </div>
                                 <span class="catalog-desc" id="txt-cat-kinder">Kinder & Pipi</span>
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
