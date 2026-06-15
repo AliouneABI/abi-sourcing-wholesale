@@ -32,15 +32,15 @@
         /* Bloc Image pour Zeti */
         .product-preview-container { display: flex; gap: 15px; margin-top: 10px; border-top: 1px dashed #e5e5e5; padding-top: 15px; align-items: center; }
         .product-img-wrapper { width: 120px; height: 90px; background: #eaeaea; border-radius: 6px; overflow: hidden; flex-shrink: 0; border: 1px solid #e5e5e5; }
-        .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .product-img-wrapper img { width: 100%; height: 100%; object-fit: contain; background: #ffffff; }
         .product-preview-text { font-size: 0.85rem; color: #444444; line-height: 1.4; }
 
         /* Grille des Catalogues */
         .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; border-top: 1px dashed #e5e5e5; padding-top: 15px; }
         .catalog-card { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px; cursor: pointer; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
         .catalog-card:hover { transform: translateY(-2px); border-color: #111111; }
-        .catalog-img-wrapper { width: 100%; height: 110px; background: #eaeaea; border-radius: 4px; overflow: hidden; margin-bottom: 6px; position: relative; }
-        .catalog-card img { width: 100%; height: 100%; object-fit: cover; }
+        .catalog-img-wrapper { width: 100%; height: 110px; background: #ffffff; border-radius: 4px; overflow: hidden; margin-bottom: 6px; border: 1px solid #f0f0f0; }
+        .catalog-card img { width: 100%; height: 100%; object-fit: contain; }
         .catalog-desc { font-size: 0.75rem; font-weight: bold; color: #333333; display: block; margin-bottom: 4px; text-align: left; padding: 0 2px; }
         .download-trigger-btn { width: 100%; background: #111111; color: #ffffff; font-size: 0.7rem; font-weight: bold; padding: 5px 0; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; }
         .catalog-card:hover .download-trigger-btn { background: #25D366; }
@@ -74,20 +74,20 @@
             <p class="bot-message" id="txt-bot-welcome">Habari! Karibu A-B-I. <br>Chagua chaguo lako tafadhali :</p>
             <ul class="options-list">
                 
-                <!-- OPTION 1 : Huile Zeti avec votre vraie photo -->
+                <!-- OPTION 1 : Huile Zeti -->
                 <li class="option-box">
                     <button class="option-header-btn" onclick="selectOption(1)">
                         <strong id="txt-opt1-title">1️⃣ MAFUTA YA ALIZETI (Zeti Sunflower Oil 1L)</strong>
                         <span class="price-badge" id="txt-opt1-badge">
                             • 2,000+ Pcs ➔ <b>6,500 TZS</b><br>
-                            • 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery)<br>
+                            • 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery kuanzia vipande 1000)<br>
                             • 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>
                         </span>
                         
-                        <!-- Appel direct de l'image ajoutée au dossier -->
                         <div class="product-preview-container">
                             <div class="product-img-wrapper">
-                                <img src="zeti-oil.jpg.jpg" alt="Zeti Sunflower Oil">
+                                <!-- Lien direct de votre image officielle Cemex Zeti -->
+                                <img src="https://cemex.co.tz/wp-content/uploads/2024/11/cemex-zeti-products-1024x683.png" alt="Zeti Sunflower Oil">
                             </div>
                             <div class="product-preview-text" id="txt-opt1-preview">
                                 Mafuta safi ya alizeti ya Zeti 1L ya jumla. Bofya hapa ili kuagiza sasa.
@@ -107,16 +107,18 @@
                             <span class="tag">Jadida</span><span class="tag">Nutella</span><span class="tag">Kinder</span><span class="tag">Monster Energy</span><span class="tag">Redbull</span>
                         </div>
                         
-                        <!-- VISU DES CATALOGUES -->
+                        <!-- VISU DES CATALOGUES CORRIGÉS ET FIDÈLES -->
                         <div class="catalog-grid">
+                            <!-- NUTELLA ED. FESTIVE 630G -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Nutella 630g')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1541594191691-543a99e90674?w=400&q=80" alt="Nutella">
+                                    <img src="https://www.nutella.com/al/en/images/products/p_nutella_630_v1.png" alt="Nutella 630g Festive">
                                 </div>
                                 <span class="catalog-desc">Nutella 630g</span>
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
                             </div>
                             
+                            <!-- MONSTER ENERGY 500ML -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Monster Energy 500ml')">
                                 <div class="catalog-img-wrapper">
                                     <img src="https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400&q=80" alt="Monster">
@@ -125,17 +127,19 @@
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
                             </div>
 
+                            <!-- MARGARINES & MAYONNAISES -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Margarines & Mayonnaises')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=400&q=80" alt="Margarines">
+                                    <img src="https://images.unsplash.com/photo-1608797178974-15b35a61d121?w=400&q=80" alt="Margarines & Mayonnaises">
                                 </div>
                                 <span class="catalog-desc" id="txt-cat-margarine">Margarines na Mayonnaises</span>
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
                             </div>
 
+                            <!-- KINDER CLASSIC & WHITE -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Kinder & Chocolates')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1581798459219-318e76aecc7b?w=400&q=80" alt="Kinder">
+                                    <img src="https://images.unsplash.com/photo-1626803775151-61d756612f97?w=400&q=80" alt="Kinder Classic & White">
                                 </div>
                                 <span class="catalog-desc" id="txt-cat-kinder">Kinder & Pipi</span>
                                 <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
@@ -202,7 +206,7 @@
             subtitle: "International Sourcing & Local Distribution",
             welcome: "Habari! Karibu A-B-I. <br>Chagua chaguo lako tafadhali :",
             opt1_title: "1️⃣ MAFUTA YA ALIZETI (Zeti Sunflower Oil 1L)",
-            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery)<br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>",
+            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery kuanzia vipande 1000)<br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>",
             opt1_preview: "Mafuta safi ya alizeti ya Zeti 1L ya jumla. Bofya hapa ili kuagiza sasa.",
             opt2_title: "2️⃣ UINGIZAJI WA COCHELI ZA BINAFSI (Chombo / Chombo nusu)",
             opt2_badge: "Nusu kontena kwa bei bora zaidi ya soko! Pokea bei hapa.",
@@ -228,7 +232,7 @@
             subtitle: "International Sourcing & Local Distribution",
             welcome: "Hello! Welcome to A-B-I. <br>Please select your option:",
             opt1_title: "1️⃣ SUNFLOWER OIL (Zeti Sunflower Oil 1L)",
-            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery)<br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>",
+            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery from 1,000 pieces)<br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>",
             opt1_preview: "Premium Zeti sunflower oil 1L for wholesale. Click here to order now.",
             opt2_title: "2️⃣ PRIVATE GROUPAGE IMPORT (Container / Semi-container)",
             opt2_badge: "Your semi-container at the best market rates! Get prices here.",
