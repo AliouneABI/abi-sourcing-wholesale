@@ -36,8 +36,9 @@
         .catalog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; border-top: 1px dashed #e5e5e5; padding-top: 15px; }
         .catalog-card { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px; cursor: pointer; text-align: center; transition: transform 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
         .catalog-card:hover { transform: translateY(-2px); border-color: #111111; }
-        .catalog-img-wrapper { width: 100%; height: 110px; background: #ffffff; border-radius: 4px; overflow: hidden; margin-bottom: 6px; border: 1px solid #f0f0f0; }
-        .catalog-card img { width: 100%; height: 100%; object-fit: contain; }
+        .catalog-img-wrapper { width: 100%; height: 110px; background: #ffffff; border-radius: 4px; overflow: hidden; margin-bottom: 6px; border: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: center; }
+        .catalog-card img { width: 100%; height: 100%; object-fit: contain; background: #ffffff; }
+        .catalog-card:nth-child(2) img { background-color: #000000; }
         .catalog-desc { font-size: 0.75rem; font-weight: bold; color: #333333; display: block; margin-bottom: 4px; text-align: left; padding: 0 2px; }
         .download-trigger-btn { width: 100%; background: #111111; color: #ffffff; font-size: 0.7rem; font-weight: bold; padding: 5px 0; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; }
         .catalog-card:hover .download-trigger-btn { background: #25D366; }
@@ -66,7 +67,7 @@
     <p class="contact-info">contact@a-b-i.fr | Mobile : 0724 298 976</p>
 
     <div class="chat-container">
-        <!-- ÉTAPE 1 : Sélection -->
+        <!-- ÉTAPE 1 : Choix Options Principales -->
         <div id="chat-step-1">
             <p class="bot-message" id="txt-bot-welcome">Habari! Karibu A-B-I. <br>Chagua chaguo lako tafadhali :</p>
             <ul class="options-list">
@@ -76,9 +77,7 @@
                     <button class="option-header-btn" onclick="selectOption(1)">
                         <strong id="txt-opt1-title">1️⃣ MAFUTA YA ALIZETI (Zeti Sunflower Oil 1L)</strong>
                         <span class="price-badge" id="txt-opt1-badge">
-                            • 2,000+ Pcs ➔ <b>6,500 TZS</b><br>
-                            • 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery kuanzia vipande 1000)<br>
-                            • 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>
+                            Agiza jumla kutoka kwa msambazaji mkuu. Ofa ya usafiri wa bure inapatikana kulingana na kiasi.
                         </span>
                         
                         <div class="product-preview-container">
@@ -86,98 +85,102 @@
                                 <img src="https://cemex.co.tz/wp-content/uploads/2024/11/cemex-zeti-products-1024x683.png" alt="Zeti Sunflower Oil">
                             </div>
                             <div class="product-preview-text" id="txt-opt1-preview">
-                                Mafuta safi ya alizeti ya Zeti 1L ya jumla. Bofya hapa ili kuagiza sasa.
+                                Mafuta safi ya alizeti ya Zeti 1L ya jumla. Bofya hapa ili kuchagua kiasi.
                             </div>
                         </div>
                     </button>
                 </li>
                 
-                <!-- OPTION 2 : Import & Catalogues -->
+                <!-- OPTION 2 : Import Groupé B2B & Catalogues -->
                 <li class="option-box">
                     <div class="option-header-btn">
                         <strong id="txt-opt2-title" onclick="selectOption(2)">2️⃣ UINGIZAJI WA COCHELI ZA BINAFSI (Chombo / Chombo nusu)</strong>
                         <span class="price-badge" id="txt-opt2-badge" onclick="selectOption(2)" style="margin-bottom: 8px;">
-                            Nusu kontena kwa bei bora zaidi ya soko! Pokea bei hapa.
+                            Nusu kontena kwa bei bora zaidi ya soko! Fungua katalogi hapa chini.
                         </span>
                         <div class="brand-tags" onclick="selectOption(2)">
                             <span class="tag">Jadida</span><span class="tag">Nutella</span><span class="tag">Kinder</span><span class="tag">Monster Energy</span><span class="tag">Redbull</span>
                         </div>
                         
-                        <!-- REPRÉSENTATION EXACTE DU CATALOGUE -->
                         <div class="catalog-grid">
-                            <!-- NUTELLA 630G -->
+                            <!-- NUTELLA -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Nutella 630g')">
                                 <div class="catalog-img-wrapper">
                                     <img src="nutella.png" alt="Nutella 630g">
                                 </div>
                                 <span class="catalog-desc">Nutella 630g</span>
-                                <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
+                                <button class="download-trigger-btn">Download PDF</button>
                             </div>
                             
-                            <!-- MONSTER ENERGY 500ML -->
+                            <!-- MONSTER -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Monster Energy 500ml')">
                                 <div class="catalog-img-wrapper">
                                     <img src="https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400&q=80" alt="Monster">
                                 </div>
                                 <span class="catalog-desc">Monster Energy 500ml</span>
-                                <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
+                                <button class="download-trigger-btn">Download PDF</button>
                             </div>
 
-                            <!-- MARGARINES & MAYONNAISES JADIDA -->
-                            <div class="catalog-card" onclick="triggerCatalogDownload('Margarines & Mayonnaises')">
+                            <!-- JADIDA (OFFICIEL CATALOGUE ENREGISTRÉ) -->
+                            <div class="catalog-card" onclick="triggerCatalogDownload('Margarines & Mayonnaises Jadida')">
                                 <div class="catalog-img-wrapper">
-                                    <img src="jadida.jpg" alt="Gamme Jadida">
+                                    <img src="jadida.jpg" alt="Gamme Officielle Jadida">
                                 </div>
                                 <span class="catalog-desc" id="txt-cat-margarine">Margarines na Mayonnaises</span>
-                                <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
+                                <button class="download-trigger-btn">Download PDF</button>
                             </div>
 
-                            <!-- KINDER ETC -->
+                            <!-- KINDER -->
                             <div class="catalog-card" onclick="triggerCatalogDownload('Kinder & Chocolates')">
                                 <div class="catalog-img-wrapper">
                                     <img src="https://images.tcdn.com.br/img/img_prod/746520/cesta_de_chocolate_com_milka_kit_kat_nutella_16_itens_cod_1777_5801396_2_465339d3a524a8e525aa6818def260be.jpg" alt="Kinder & Chocolates">
                                 </div>
                                 <span class="catalog-desc" id="txt-cat-kinder">Kinder & Pipi</span>
-                                <button class="download-trigger-btn" class="txt-dl-btn">Download PDF</button>
+                                <button class="download-trigger-btn">Download PDF</button>
                             </div>
                         </div>
-
                     </div>
                 </li>
             </ul>
         </div>
 
-        <!-- ÉTAPE 2 : Formulaire Huile -->
+        <!-- FORMULAIRE ÉTAPE 2 : Option Huile Zeti ("1 pour" / "2 pour") -->
         <div id="form-oil" class="order-form">
-            <p class="bot-message"><b id="txt-form1-header">Zeti Sunflower Oil 1L</b><br><span id="txt-form1-sub">Weka taarifa zako ili kukamilisha agizo :</span></p>
+            <p class="bot-message"><b id="txt-form1-header">Zeti Sunflower Oil 1L</b><br><span id="txt-form1-sub">Weka jina lako kisha chagua kiwango chako cha agizo :</span></p>
+            
             <div class="input-group">
-                <label id="lbl-oil-name">Jina lako (Votre Nom complet)</label>
+                <label id="lbl-oil-name">Jina lako kamili (Votre Nom complet)</label>
                 <input type="text" id="oil-name" placeholder="Mfano: John Doe" required>
             </div>
-            <div class="input-group">
-                <label id="lbl-oil-qty">Idadi (Quantité - MOQ 500)</label>
-                <input type="number" id="oil-qty" placeholder="Min: 500" min="500" required>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                <button class="submit-btn" style="background-color: #111111;" onclick="submitOilOrder(1)">
+                    1️⃣ Chagua / Select : 1,000 Pcs (Free Delivery)
+                </button>
+                <button class="submit-btn" style="background-color: #111111;" onclick="submitOilOrder(2)">
+                    2️⃣ Chagua / Select : 2,000+ Pcs (Wholesale Volume)
+                </button>
             </div>
-            <button class="submit-btn" id="btn-oil-submit" onclick="submitOilOrder()">Kamilisha Agizo kwenye WhatsApp ➔</button>
-            <span class="back-btn" id="btn-oil-back" onclick="goBack()">Rudi nyuma</span>
+            
+            <span class="back-btn" id="btn-oil-back" onclick="goBack()" style="margin-top: 20px; display: block;">Rudi nyuma / Back</span>
         </div>
 
-        <!-- ÉTAPE 2 : Formulaire Import -->
+        <!-- FORMULAIRE ÉTAPE 2 : Option Import ("1 pour" / "2 pour") -->
         <div id="form-import" class="order-form">
-            <p class="bot-message"><b id="txt-form2-header">Votre conteneur/semi-conteneur au meilleur prix</b><br><span id="txt-form2-sub">Jaza fomu hii ili kupokea orodha ya bei :</span></p>
+            <p class="bot-message"><b id="txt-form2-header">Uingizaji wa Kontena (Groupage B2B)</b><br><span id="txt-form2-sub">Weka taarifa zako za biashara kisha chagua aina ya mzigo wako :</span></p>
             
             <input type="hidden" id="selected-catalog" value="General Import">
 
             <div class="input-group">
-                <label id="lbl-imp-name">Jina na Ukoo (Nom et Prénom complets)</label>
+                <label id="lbl-imp-name">Jina na Ukoo (Nom et Prénom)</label>
                 <input type="text" id="imp-name" placeholder="Mfano: Alioune M'Baye" required>
             </div>
             <div class="input-group">
-                <label id="lbl-imp-tin">Namba ya TIN (Numéro TIN Fiscale)</label>
+                <label id="lbl-imp-tin">Namba ya TIN ya Biashara (Numéro TIN)</label>
                 <input type="text" id="imp-tin" placeholder="Mfano: 123-456-789" required>
             </div>
             <div class="input-group">
-                <label id="lbl-imp-phone">Namba ya Simu (Numéro de Mobile)</label>
+                <label id="lbl-imp-phone">Namba ya Simu (Téléphone Mobile)</label>
                 <input type="tel" id="imp-phone" placeholder="Mfano: 0773630492" required>
             </div>
             <div class="input-group">
@@ -185,8 +188,16 @@
                 <input type="email" id="imp-email" placeholder="Mfano: contact@a-b-i.fr" required>
             </div>
             
-            <button class="submit-btn" id="btn-imp-submit" onclick="submitImportRequest()">Pokea Orodha ya Bei kwenye WhatsApp ➔</button>
-            <span class="back-btn" id="btn-imp-back" onclick="goBack()">Rudi nyuma</span>
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                <button class="submit-btn" style="background-color: #111111;" onclick="submitImportRequest(1)">
+                    1️⃣ Chagua / Select : Nusu Kontena (Semi-container)
+                </button>
+                <button class="submit-btn" style="background-color: #111111;" onclick="submitImportRequest(2)">
+                    2️⃣ Chagua / Select : Kontena Zima (Full Container)
+                </button>
+            </div>
+            
+            <span class="back-btn" id="btn-imp-back" onclick="goBack()" style="margin-top: 20px; display: block;">Rudi nyuma / Back</span>
         </div>
     </div>
 </div>
@@ -194,6 +205,7 @@
 <script>
     let currentLang = 'sw';
     
+    // CONFIGURATION DES IDENTIFIANTS (Remplacer par vos vrais ID)
     const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/D5riqmrBz5I9RR8Nt6c9BH"; 
     const FORMSPREE_ID = "VOTRE_ID_FORMSPREE"; 
 
@@ -202,53 +214,43 @@
             subtitle: "International Sourcing & Local Distribution",
             welcome: "Habari! Karibu A-B-I. <br>Chagua chaguo lako tafadhali :",
             opt1_title: "1️⃣ MAFUTA YA ALIZETI (Zeti Sunflower Oil 1L)",
-            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery kuanzia vipande 1000)<br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>",
-            opt1_preview: "Mafuta safi ya alizeti ya Zeti 1L ya jumla. Bofya hapa ili kuagiza sasa.",
+            opt1_badge: "Agiza jumla kutoka kwa msambazaji mkuu. Ofa ya usafiri wa bure inapatikana kulingana na kiasi.",
+            opt1_preview: "Mafuta safi ya alizeti ya Zeti 1L ya jumla. Bofya hapa ili kuchagua kiasi.",
             opt2_title: "2️⃣ UINGIZAJI WA COCHELI ZA BINAFSI (Chombo / Chombo nusu)",
-            opt2_badge: "Nusu kontena kwa bei bora zaidi ya soko! Pokea bei hapa.",
+            opt2_badge: "Nusu kontena kwa bei bora zaidi ya soko! Fungua katalogi hapa chini.",
             cat_margarine: "Margarines na Mayonnaises",
             cat_kinder: "Kinder & Pipi",
             form1_header: "Zeti Sunflower Oil 1L",
-            form1_sub: "Weka taarifa zako ili kukamilisha agizo :",
-            lbl_oil_name: "Jina lako (Jina kamili)",
-            lbl_oil_qty: "Idadi (Kiwango cha chini: 500)",
-            btn_oil_submit: "Kamilisha Agizo kwenye WhatsApp ➔",
-            btn_oil_back: "Rudi nyuma",
-            form2_header: "Fungua Katalogi yenye Bei za Jumla",
-            form2_sub: "Jaza fomu hii ili kupokea katalogi na bei kwenye WhatsApp yako:",
+            form1_sub: "Weka jina lako kisha chagua kiwango chako cha agizo :",
+            lbl_oil_name: "Jina lako kamili (Jina kamili)",
+            form2_header: "Uingizaji wa Kontena (Groupage B2B)",
+            form2_sub: "Weka taarifa zako za biashara kisha chagua aina ya mzigo wako :",
             lbl_imp_name: "Jina na Ukoo",
             lbl_imp_tin: "Namba ya TIN ya Biashara",
             lbl_imp_phone: "Namba ya Simu",
             lbl_imp_email: "Barua Pepe (Email)",
-            btn_imp_submit: "Pakua Katalogi kwenye WhatsApp ➔",
-            btn_imp_back: "Rudi nyuma",
-            alert_fill: "Tafadhali jaza nafasi zote"
+            alert_fill: "Tafadhali jaza nafasi zote zinazohitajika"
         },
         en: {
             subtitle: "International Sourcing & Local Distribution",
             welcome: "Hello! Welcome to A-B-I. <br>Please select your option:",
             opt1_title: "1️⃣ SUNFLOWER OIL (Zeti Sunflower Oil 1L)",
-            opt1_badge: "• 2,000+ Pcs ➔ <b>6,500 TZS</b><br>• 1,000+ Pcs ➔ <b>6,800 TZS</b> (Free Delivery from 1,000 pieces)<br>• 500+ Pcs (MOQ) ➔ <b>7,000 TZS</b>",
-            opt1_preview: "Premium Zeti sunflower oil 1L for wholesale. Click here to order now.",
+            opt1_badge: "Order wholesale from the main supplier. Free delivery offer available based on volume.",
+            opt1_preview: "Premium Zeti sunflower oil 1L for wholesale. Click here to choose volume.",
             opt2_title: "2️⃣ PRIVATE GROUPAGE IMPORT (Container / Semi-container)",
-            opt2_badge: "Your semi-container at the best market rates! Get prices here.",
+            opt2_badge: "Your semi-container at the best market rates! Open the catalogs below.",
             cat_margarine: "Margarines & Mayonnaises",
             cat_kinder: "Kinder & Chocolates",
             form1_header: "Zeti Sunflower Oil 1L",
-            form1_sub: "Enter your information to complete your order:",
-            lbl_oil_name: "Your Name (Full name)",
-            lbl_oil_qty: "Quantity (MOQ: 500)",
-            btn_oil_submit: "Complete Order on WhatsApp ➔",
-            btn_oil_back: "Go Back",
-            form2_header: "Unlock Catalog with Wholesale Prices",
-            form2_sub: "Fill this form to receive the official catalog & price list on WhatsApp:",
+            form1_sub: "Enter your name then select your order volume package:",
+            lbl_oil_name: "Your Full Name",
+            form2_header: "Container Import (B2B Groupage)",
+            form2_sub: "Enter your business details then choose your cargo volume type:",
             lbl_imp_name: "Full Name",
             lbl_imp_tin: "TIN Number (Tax Registration)",
             lbl_imp_phone: "Mobile Number",
             lbl_imp_email: "Email Address",
-            btn_imp_submit: "Download Catalog on WhatsApp ➔",
-            btn_imp_back: "Go Back",
-            alert_fill: "Please fill in all fields"
+            alert_fill: "Please fill in all required fields"
         }
     };
 
@@ -270,9 +272,6 @@
         document.getElementById('txt-form1-header').innerHTML = translations[lang].form1_header;
         document.getElementById('txt-form1-sub').innerHTML = translations[lang].form1_sub;
         document.getElementById('lbl-oil-name').innerHTML = translations[lang].lbl_oil_name;
-        document.getElementById('lbl-oil-qty').innerHTML = translations[lang].lbl_oil_qty;
-        document.getElementById('btn-oil-submit').innerHTML = translations[lang].btn_oil_submit;
-        document.getElementById('btn-oil-back').innerHTML = translations[lang].btn_oil_back;
         
         document.getElementById('txt-form2-header').innerHTML = translations[lang].form2_header;
         document.getElementById('txt-form2-sub').innerHTML = translations[lang].form2_sub;
@@ -280,8 +279,6 @@
         document.getElementById('lbl-imp-tin').innerHTML = translations[lang].lbl_imp_tin;
         document.getElementById('lbl-imp-phone').innerHTML = translations[lang].lbl_imp_phone;
         document.getElementById('lbl-imp-email').innerHTML = translations[lang].lbl_imp_email;
-        document.getElementById('btn-imp-submit').innerHTML = translations[lang].btn_imp_submit;
-        document.getElementById('btn-imp-back').innerHTML = translations[lang].btn_imp_back;
 
         const dlButtons = document.getElementsByClassName('download-trigger-btn');
         for(let btn of dlButtons) {
@@ -316,23 +313,37 @@
         document.getElementById('selected-catalog').value = "General Import";
     }
 
-    function submitOilOrder() {
+    function submitOilOrder(choiceType) {
         const name = document.getElementById('oil-name').value;
-        const qty = document.getElementById('oil-qty').value;
-        if (!name || !qty) { alert(translations[currentLang].alert_fill); return; }
+        if (!name) { alert(currentLang === 'sw' ? "Tafadhali jaza jina lako" : "Please enter your name"); return; }
+
+        let whatsappMessage = "";
+        let quantityTracked = "";
+
+        if (choiceType === 1) {
+            quantityTracked = "1000 Pcs (Free Delivery Intent)";
+            whatsappMessage = currentLang === 'sw' 
+                ? `Habari ABI! Mimi ni ${name}. Nataka kuagiza kuanzia chupa 1,000 za Mafuta ya Alizeti ya Zeti (1L) ili nipate usafiri wa bure. Sijawahi kununua kwenu kabla. Taratibu za kuagiza na kufikishiwa mzigo zikoje, na malipo ni salama?`
+                : `Hi ABI Team! I'm ${name}. I am interested in ordering a batch of 1,000 bottles of Zeti Sunflower Oil (1L) to get the Free Delivery. I have not bought from you before. How does ordering and delivery work, and is it safe to pay?`;
+        } else {
+            quantityTracked = "2000+ Pcs (Wholesale Volume Intent)";
+            whatsappMessage = currentLang === 'sw' 
+                ? `Habari ABI! Mimi ni ${name}. Nataka kuulizia kuhusu kuagiza kiasi kikubwa cha chupa 2,000+ za Mafuta ya Alizeti ya Zeti (1L). Kwa kuwa ni mara yangu ya kwanza kuagiza ABI, naomba mnifafanulie taratibu za kuagiza, muda wa kufika mzigo, na usalama wa malipo?`
+                : `Hi ABI Team! I am ${name}. I want to inquire about ordering a large volume of 2,000+ pieces of Zeti Sunflower Oil (1L). Since this is my first order with ABI, could you explain your ordering process, delivery timelines, and payment safety terms?`;
+        }
 
         fetch("https://formspree.io/f/" + FORMSPREE_ID, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ category: "Zeti Oil", name: name, quantity: qty })
+            body: JSON.stringify({ category: "Zeti Oil Package Selected", buyer_name: name, package: quantityTracked })
         }).then(() => {
-            window.location.href = WHATSAPP_GROUP_LINK;
+            window.location.href = "https://wa.me/?text=" + encodeURIComponent(whatsappMessage);
         }).catch(err => {
-            window.location.href = WHATSAPP_GROUP_LINK;
+            window.location.href = "https://wa.me/?text=" + encodeURIComponent(whatsappMessage);
         });
     }
 
-    function submitImportRequest() {
+    function submitImportRequest(choiceType) {
         const name = document.getElementById('imp-name').value;
         const tin = document.getElementById('imp-tin').value;
         const phone = document.getElementById('imp-phone').value;
@@ -341,14 +352,21 @@
         
         if (!name || !tin || !phone || !email) { alert(translations[currentLang].alert_fill); return; }
 
+        let whatsappMessage = "";
+        let volumeTracked = choiceType === 1 ? "Nusu Kontena (Semi-container)" : "Kontena Zima (Full Container)";
+
+        whatsappMessage = currentLang === 'sw'
+            ? `Habari ABI! Jina langu ni ${name}, kutoka kampuni yenye TIN: ${tin}. Nimevutiwa na katalogi yenu ya (${catalogTarget}). Nataka kupokea bei za jumla na maelezo ya uagizaji kwa kiwango cha: ${volumeTracked}. Tafadhali nishaurini jinsi ya kuanza.`
+            : `Hi ABI Team! My name is ${name}, representing business TIN: ${tin}. I am interested in your (${catalogTarget}) wholesale catalog. I would like to get price rates and procedures for a volume of: ${volumeTracked}. Please guide me on the next steps.`;
+
         fetch("https://formspree.io/f/" + FORMSPREE_ID, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ category: "Import Groupage", requested_item: catalogTarget, name: name, tin: tin, phone: phone, email: email })
+            body: JSON.stringify({ category: "Import Groupage Click", requested_item: catalogTarget, volume: volumeTracked, name: name, tin: tin, phone: phone, email: email })
         }).then(() => {
-            window.location.href = WHATSAPP_GROUP_LINK;
+            window.location.href = "https://wa.me/?text=" + encodeURIComponent(whatsappMessage);
         }).catch(err => {
-            window.location.href = WHATSAPP_GROUP_LINK;
+            window.location.href = "https://wa.me/?text=" + encodeURIComponent(whatsappMessage);
         });
     }
 </script>
